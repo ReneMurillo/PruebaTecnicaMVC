@@ -1,0 +1,57 @@
+﻿@model ControlCompras.ViewModels.FacturasView
+@{
+    ViewBag.Title = "ComprarProducto";
+}
+
+<h2>ComprarProducto</h2>
+
+@using (Html.BeginForm("ComprarProducto", "Facturas", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ActionLink("Add product", "AddProducto", new { }, new { @class = "btn btn-primary" })
+        <input type="submit" value="Guardar Orden" id="NewOrder" class="btn btn-default" />
+    </div>
+}
+<h2>Order Details</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrdenProducto.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrdenProducto.Precio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrdenProducto.Cantidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrdenProducto.Valor)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @for (int i = 0; i < Model.Productos.Count; i++)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Productos[i].Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Productos[i].Precio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Productos[i].Cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Productos[i].Valor)
+            </td>
+
+
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ControlCompras.Models.Ubicaciones>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Ubicaciones</h2>
+@if (ViewBag.Error != null)
+{
+    <div class="row">
+        <font color="red">
+            @ViewBag.Error
+        </font>
+    </div>
+}
+
+<p>
+    @Html.ActionLink("Create New", "CreateOrEdit")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.IdUbicacion }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.IdUbicacion }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>

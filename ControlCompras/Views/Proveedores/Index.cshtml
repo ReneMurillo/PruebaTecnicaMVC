@@ -1,0 +1,83 @@
+﻿@model IEnumerable<ControlCompras.Models.Proveedores>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Proveedores</h2>
+@if (ViewBag.Error != null)
+{
+    <div class="row">
+        <font color="red">
+            @ViewBag.Error
+        </font>
+    </div>
+}
+<p>
+    @Html.ActionLink("Create New", "CreateOrEdit")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RazonSocial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dui)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nrc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaRegistro)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RazonSocial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dui)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nrc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaRegistro)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "CreateOrEdit", new { id = item.IdProveedor }, new { @class = "btn btn-primary"}) |
+                @Html.ActionLink("Detalle", "Details", new { id = item.IdProveedor }, new { @class = "btn btn-success" }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.IdProveedor }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>
